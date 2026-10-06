@@ -1,4 +1,4 @@
-# Enes Turhan | Dijital Ürün ve Yazılım
+# Mülakat Örnek | Dijital Ürün ve Yazılım
 
 Kişisel hizmet tanıtım sayfası ve hizmet talebi formu. Django ile sunulan form alanları hem tarayıcıda hem sunucuda doğrulanır; geçerli talepler SQLite veritabanına kaydedilir.
 
