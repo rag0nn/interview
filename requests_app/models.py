@@ -20,4 +20,4 @@ class ServiceRequest(models.Model):
 		verbose_name_plural = 'Hizmet talepleri'
 
 	def __str__(self):
-		return f'{self.name} — {self.get_service_display()}'
+		return f'{self.name} — {self.email} — {self.service} — {self.created_at.strftime("%Y-%m-%d %H:%M:%S")} - {self.description[:50]}...'

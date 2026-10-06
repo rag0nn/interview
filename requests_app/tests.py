@@ -1,6 +1,7 @@
 from unittest.mock import patch
 
 from django.db import DatabaseError
+from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
 
@@ -40,3 +41,24 @@ class ServiceRequestSubmissionTests(TestCase):
         self.assertContains(response, 'Talebiniz şu anda kaydedilemedi.')
         self.assertNotContains(response, 'Talebiniz ulaştı.')
         self.assertEqual(ServiceRequest.objects.count(), 0)
+
+
+class ServiceRequestAdminTests(TestCase):
+    def test_admin_list_shows_request_description_preview(self):
+        admin_user = get_user_model().objects.create_superuser(
+            username='admin',
+            email='admin@example.com',
+            password='test-password',
+        )
+        ServiceRequest.objects.create(
+            name='Ada Yılmaz',
+            email='ada@example.com',
+            service=ServiceRequest.Service.WEBSITE,
+            description='Kurumsal web sitesi için yeni bir tasarım talebi.',
+        )
+        self.client.force_login(admin_user)
+
+        response = self.client.get(reverse('admin:requests_app_servicerequest_changelist'))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Kurumsal web sitesi için yeni bir tasarım talebi.')
