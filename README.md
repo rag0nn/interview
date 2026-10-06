@@ -26,11 +26,11 @@ Başvurular `db.sqlite3` içinde kalıcı olarak saklanır. Django yönetim aray
 
 ## Dağıtım notları
 
-Bu teslim yerel çalışmaya hazırdır; henüz canlı URL veya uzak Git deposu oluşturulmadı. Yayın için hosting hesabı ve bir uzak depo hedefi gerekir. Üretimde `DJANGO_SECRET_KEY`, `DJANGO_DEBUG=0` ve `DJANGO_ALLOWED_HOSTS` ortam değişkenlerini tanımlayın; SQLite dosyası kalıcı disk üzerinde tutulmalıdır. Kalıcı dosya diski sunmayan platformlarda üretim veritabanı olarak PostgreSQL yapılandırın. Gerçek canlı URL ve herkese açık kaynak bağlantısı bu erişimler sağlanınca eklenmelidir.
+Bu teslim yerel çalışmaya hazırdır; Repo [link](https://github.com/rag0nn/interview) Yayın için hosting hesabı ve bir uzak depo hedefi gerekir. Üretimde `DJANGO_SECRET_KEY`, `DJANGO_DEBUG=0` ve `DJANGO_ALLOWED_HOSTS` ortam değişkenlerini tanımlayın; SQLite dosyası kalıcı disk üzerinde tutulmalıdır. Kalıcı dosya diski sunmayan platformlarda üretim veritabanı olarak PostgreSQL yapılandırın. Gerçek canlı URL ve herkese açık kaynak bağlantısı bu erişimler sağlanınca eklenmelidir.
 
 ## Proje notları
 
 - [requirements.md](requirements.md): gereksinimler ve tamamlanma durumu
 - [summary.md](summary.md): değişiklik özeti
 - [summary_timeline.md](summary_timeline.md): değişiklik zaman çizelgesi
-- [AI_LOG.md](AI_LOG.md): geliştirme ve doğrulama kaydı
+- [AI_LOG.md](AI_LOG.md): geliştirme ai logu
