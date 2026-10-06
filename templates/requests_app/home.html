@@ -1,0 +1,129 @@
+{% load static %}
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Enes Turhan ile web, backend ve otomasyon projelerinizi hayata geçirin.">
+  <title>Enes Turhan — Dijital Ürün ve Yazılım</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/site.css' %}">
+</head>
+<body>
+  <header class="site-header">
+    <a class="wordmark" href="#top" aria-label="Enes Turhan ana sayfa">ET<span>.</span></a>
+    <nav class="main-nav" aria-label="Ana menü">
+      <a href="#services">Hizmetler</a>
+      <a href="#approach">Yaklaşım</a>
+      <a class="nav-contact" href="#contact">Birlikte çalışalım <span aria-hidden="true">↗</span></a>
+    </nav>
+    <a class="mobile-contact" href="#contact" aria-label="İletişime geç">↗</a>
+  </header>
+
+  <main id="top">
+    <section class="intro page-shell" aria-labelledby="intro-title">
+      <div class="intro-copy">
+        <p class="eyebrow"><span class="status-dot"></span> BAĞIMSIZ GELİŞTİRİCİ · İSTANBUL</p>
+        <h1 id="intro-title">Fikirleri<br><span>işe yarar</span><br>ürünlere dönüştürüyorum.</h1>
+        <div class="intro-bottom">
+          <p class="intro-summary">Ben Enes Turhan. İşletmeler ve yaratıcı ekipler için iyi düşünülmüş dijital deneyimler ve sağlam yazılım geliştiriyorum.</p>
+          <a class="round-link" href="#contact" aria-label="İletişim formuna git">↓</a>
+        </div>
+      </div>
+      <aside class="intro-note" id="approach">
+        <span class="note-index">01 / YAKLAŞIM</span>
+        <p>Az gürültü.<br>Net fikir.<br><strong>Özenli uygulama.</strong></p>
+        <span class="note-mark" aria-hidden="true">ET—26</span>
+      </aside>
+    </section>
+
+    <section class="services-band" id="services" aria-labelledby="services-title">
+      <div class="services-inner page-shell">
+        <div class="section-heading">
+          <p class="eyebrow eyebrow-light">NASIL YARDIMCI OLABİLİRİM</p>
+          <h2 id="services-title">İhtiyacınıza göre,<br>doğru yerden başlarız.</h2>
+        </div>
+        <div class="service-list">
+          <article class="service-row">
+            <span class="service-number">01</span>
+            <div><h3>Web tasarımı ve geliştirme</h3><p>Hızlı, anlaşılır ve markanıza ait web deneyimleri.</p></div>
+            <span class="service-arrow" aria-hidden="true">↗</span>
+          </article>
+          <article class="service-row">
+            <span class="service-number">02</span>
+            <div><h3>Backend ve API</h3><p>Ürününüzü taşıyan güvenilir servisler ve entegrasyonlar.</p></div>
+            <span class="service-arrow" aria-hidden="true">↗</span>
+          </article>
+          <article class="service-row">
+            <span class="service-number">03</span>
+            <div><h3>Teknik danışmanlık</h3><p>Belirsiz gereksinimlerden uygulanabilir teknik plana.</p></div>
+            <span class="service-arrow" aria-hidden="true">↗</span>
+          </article>
+          <article class="service-row">
+            <span class="service-number">04</span>
+            <div><h3>Süreç otomasyonu</h3><p>Tekrarlayan işleri azaltan küçük ve etkili araçlar.</p></div>
+            <span class="service-arrow" aria-hidden="true">↗</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section page-shell" id="contact" aria-labelledby="contact-title">
+      <div class="contact-copy">
+        <p class="eyebrow">02 / İLETİŞİM</p>
+        <h2 id="contact-title">Aklınızdaki<br>işi konuşalım.</h2>
+        <p>Projenizi birkaç cümleyle anlatın. Size e-posta üzerinden dönüş yapacağım.</p>
+        <span class="contact-aside">YENİ PROJE TALEPLERİ AÇIK</span>
+      </div>
+
+      <div class="form-panel">
+        {% if messages %}
+          {% for message in messages %}
+            <div class="form-notice form-notice-success" role="status">{{ message }}</div>
+          {% endfor %}
+        {% endif %}
+        {% if submission_error %}
+          <div class="form-notice form-notice-error" role="alert">{{ submission_error }}</div>
+        {% endif %}
+        <form method="post" class="request-form" novalidate>
+          {% csrf_token %}
+          <div class="field-grid">
+            <div class="field">
+              <label for="{{ form.name.id_for_label }}">Ad soyad</label>
+              {{ form.name }}
+              {% for error in form.name.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+            </div>
+            <div class="field">
+              <label for="{{ form.email.id_for_label }}">E-posta</label>
+              {{ form.email }}
+              {% for error in form.email.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+            </div>
+          </div>
+          <div class="field">
+            <label for="{{ form.service.id_for_label }}">Hangi konuda çalışalım?</label>
+            {{ form.service }}
+            {% for error in form.service.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+          </div>
+          <div class="field">
+            <div class="label-line"><label for="{{ form.description.id_for_label }}">Projenizden bahsedin</label><span class="character-count" data-character-count>0 / 1500</span></div>
+            {{ form.description }}
+            {% for error in form.description.errors %}<p class="field-error">{{ error }}</p>{% endfor %}
+          </div>
+          {% if form.non_field_errors %}<div class="form-notice form-notice-error" role="alert">{{ form.non_field_errors }}</div>{% endif %}
+          <button class="submit-button" type="submit"><span data-button-label>Talep gönder</span><span aria-hidden="true">↗</span></button>
+          <p class="form-footnote">Bilgileriniz yalnızca talebinize dönüş yapmak için kullanılır.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer page-shell">
+    <a class="wordmark" href="#top">ET<span>.</span></a>
+    <span>© 2026 Enes Turhan</span>
+    <a href="#top">Başa dön ↑</a>
+  </footer>
+  <script src="{% static 'js/site.js' %}" defer></script>
+</body>
+</html>
